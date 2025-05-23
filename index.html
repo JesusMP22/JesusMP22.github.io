@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jesús Moreno | Portafolio Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #1e293b;
+      --primary: #3b82f6;
+      --secondary: #22d3ee;
+      --text: #f8fafc;
+      --accent: #38bdf8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at 20% 20%, #1e3a8a 0%, #0f172a 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 100vh;
+      background: radial-gradient(circle at 30% 30%, #1e3a8a, #0f172a);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%);
+      animation: pulse 8s infinite;
+      z-index: 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    header h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    .dynamic-text {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      font-weight: 500;
+      z-index: 1;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+      text-align: center;
+      position: relative;
+    }
+
+    .section h2::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 60px;
+      background: var(--primary);
+      margin: 0.5rem auto;
+    }
+
+    .bio p {
+      font-size: 1.1rem;
+      text-align: center;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin: 1rem auto;
+      max-width: 800px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill {
+      background: var(--bg-alt);
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center;
+      border-left: 4px solid var(--secondary);
+      box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .skill:hover {
+      transform: scale(1.05);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project {
+      background-color: var(--bg-alt);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      border-top: 4px solid var(--accent);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .project h3 {
+      color: var(--primary);
+    }
+
+    .project p {
+      margin-top: 1rem;
+      color: #94a3b8;
+    }
+
+    .timeline {
+      margin-top: 2rem;
+      border-left: 3px solid var(--secondary);
+      padding-left: 2rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-item p {
+      color: #94a3b8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #0f172a;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    @media screen and (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      .section h2 {
+        font-size: 2rem;
+      }
+      .bio p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#bio">Sobre mí</a></li>
+      <li><a href="#skills">Habilidades</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#timeline">Experiencia</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Jesús Moreno</h1>
+    <p class="dynamic-text" id="typed"></p>
+  </header>
+
+  <section class="section bio" id="bio" data-aos="fade-up">
+    <h2>Sobre mí</h2>
+    <p>Soy un desarrollador web con pasión por el diseño moderno, dinámico y funcional. Me encanta crear experiencias visuales que conectan con los usuarios.</p>
+    <p>Tengo experiencia con tecnologías como HTML5, CSS3, JavaScript moderno, React y herramientas de UI/UX como Figma.</p>
+  </section>
+
+  <section class="section" id="skills" data-aos="fade-up">
+    <h2>Habilidades</h2>
+    <div class="skills-grid">
+      <div class="skill">HTML5</div>
+      <div class="skill">CSS3 / Sass</div>
+      <div class="skill">JavaScript ES6+</div>
+      <div class="skill">React.js</div>
+      <div class="skill">Tailwind CSS</div>
+      <div class="skill">Figma</div>
+      <div class="skill">Git y GitHub</div>
+      <div class="skill">Diseño Responsivo</div>
+    </div>
+  </section>
+
+  <section class="section" id="projects" data-aos="fade-up">
+    <h2>Proyectos</h2>
+    <div class="projects-grid">
+      <div class="project">
+        <h3>Portfolio React</h3>
+        <p>Un portafolio interactivo con animaciones, scroll reveal y modo oscuro, hecho con React.js y Tailwind.</p>
+      </div>
+      <div class="project">
+        <h3>Blog Personal</h3>
+        <p>Aplicación para escribir artículos con modo oscuro, localStorage y diseño limpio.</p>
+      </div>
+      <div class="project">
+        <h3>Calculadora Neumórfica</h3>
+        <p>App inspirada en neumorfismo, desarrollada con JavaScript puro.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="timeline" data-aos="fade-up">
+    <h2>Experiencia</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>2024 - Desarrollador Frontend Freelance</h4>
+        <p>Diseño y desarrollo de sitios personalizados para clientes nacionales e internacionales.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>2023 - Certificación en Desarrollo Web Moderno</h4>
+        <p>Curso intensivo de proyectos prácticos con HTML, CSS, JS y React.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>2022 - Diseñador UI en Proyecto Estudiantil</h4>
+        <p>Maquetación de interfaces responsivas en Figma para apps académicas.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Jesús Moreno · Todos los derechos reservados</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    new Typed('#typed', {
+      strings: ['Desarrollador Web.', 'Diseñador UI.', 'Creativo Frontend.', 'Soñador digital.'],
+      typeSpeed: 60,
+      backSpeed: 30,
+      backDelay: 2000,
+      loop: true
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
